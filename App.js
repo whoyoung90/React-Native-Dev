@@ -1,49 +1,56 @@
-import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import  { Header }  from './src/header';
+import { Generator } from './src/generator';
+import { Numlist } from './src/numlist';
 
-export const App = () => {
-    return(
-      <View style={styles.mainView}>
-        <View style={styles.subView}>
-          <Text style={styles.mainText}>Hello World</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>Hello World</Text>
-        </View>
-        <View style={styles.anotherSubView}>
-          <Text style={styles.mainText}>Hello World</Text>
-        </View>
-      </View>
+export default App = () => {
+  const [ appName ] = useState('My first App');
+  const [ random, setRandom ] = useState([])
+
+  const onNumAdd = () => {
+    const randomNum = Math.floor(Math.random()*100) + 1
+    setRandom(prevState => {
+      return (
+        [...prevState, randomNum]
       )
+    })
+  }
+
+  const onNumDelete = (idxprops) => {
+    const newArr = random.filter((_, index)=>{
+      return idxprops !== index
+    })
+    setRandom(newArr)
+  }
+
+  return(
+    <View style={styles.mainView}>
+      <Header appName={appName}/>
+
+      <View>
+        <Text style={styles.mainText} onPress={()=>alert('Text Press!')}>
+          WooYoung's App
+        </Text>
+      </View>
+
+      <Generator onNumAdd={onNumAdd}/>
+
+      <Numlist random={random} onNumDelete={onNumDelete} />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   mainView:{
     flex:1,
-    backgroundColor:'green',
     paddingTop:50,
     alignItems:'center',
-    justifyContent:'center'
-  },
-  subView:{
-    flex:1,
-    backgroundColor:'yellow',
-    marginBottom:10
-  },
-  anotherSubView:{
-    flex:2,
-    backgroundColor:'yellow',
-    marginBottom:10,
-    width:'100%',
-    alignItems:'center',
-    justifyContent:'center'
   },
   mainText:{
     fontSize:20,
     fontWeight:'bold',
-    color:'red',
+    color:'blue',
     padding:20
   }
 })
-
-export default App;
