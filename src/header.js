@@ -4,10 +4,10 @@ import { View, Text, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } fr
 export const Header = ({appName}) => {
     return(
         <TouchableOpacity style={styles.header} 
-            // onPress={()=> alert('Hi There!')}
-            onLongPress={()=> alert('Hi There!')}
-            // onPressIn={()=> alert('Hi There!')}
-            // onPressOut={()=> alert('Hi There!')}
+            // onPress={()=> alert('Touchable Opacity 😸')}
+            onLongPress={()=> alert('Touchable Opacity 😸')}
+            // onPressIn={()=> alert('Touchable Opacity 😸')}
+            // onPressOut={()=> alert('Touchable Opacity 😸')}
             >
             <View>
                 <Text style={styles.headerText}>{appName}</Text>

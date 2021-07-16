@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import  { Header }  from './src/header';
 import { Generator } from './src/generator';
 import { Numlist } from './src/numlist';
+import { Input } from './src/input';
 
 export default App = () => {
   const [ appName ] = useState('My first App');
@@ -11,17 +12,14 @@ export default App = () => {
   const onNumAdd = () => {
     const randomNum = Math.floor(Math.random()*100) + 1
     setRandom(prevState => {
-      return (
-        [...prevState, randomNum]
-      )
+      return [...prevState, randomNum]
     })
   }
 
-  const onNumDelete = (idxprops) => {
-    const newArr = random.filter((_, index)=>{
-      return idxprops !== index
-    })
-    setRandom(newArr)
+  const onNumDelete = (idx) => {
+    setRandom(random.filter((_, num)=> {
+      return idx !== num
+    }))
   }
 
   return(
@@ -34,9 +32,21 @@ export default App = () => {
         </Text>
       </View>
 
+      <Input />
+
       <Generator onNumAdd={onNumAdd}/>
 
-      <Numlist random={random} onNumDelete={onNumDelete} />
+      <ScrollView 
+        style={{width:"100%", marginLeft:210}}
+        // onMomentumScrollBegin={()=>alert('onMomentumScroll Begin')}
+        // onMomentumScrollEnd={()=>alert('onMomentumScroll End')}
+        // onScroll={()=>alert('onScroll')}        
+        // onContentSizeChange={(width, height)=>alert(`width : ${width} | height : ${height}`)}        
+        // bounces={false}
+      >
+        <Numlist random={random} onNumDelete={onNumDelete} />
+      </ScrollView>
+
     </View>
   )
 }
