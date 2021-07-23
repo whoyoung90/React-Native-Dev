@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { Text, StyleSheet, TouchableOpacity } from "react-native"
 
 export const Numlist = ({random, onNumDelete}) => {
     return(
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         marginTop:10,
         padding:5,
-        width:"50%",
         borderRadius:50
     },
     numText:{
