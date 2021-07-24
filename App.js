@@ -47,7 +47,6 @@ export default App = () => {
       >
         <Numlist random={random} onNumDelete={onNumDelete} />
       </ScrollView>
-
     </View>
   )
 }

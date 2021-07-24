@@ -2,65 +2,65 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, Button, ScrollView } from 'react-native';
 
 export const Input = () => {
-    const [ userInput, setUserInput ] = useState('');
-    const [ alphabet, setAlphabet ] = useState(['a', 'b', 'c']);
+  const [ userInput, setUserInput ] = useState('');
+  const [ alphabet, setAlphabet ] = useState(['a', 'b', 'c']);
 
-    const onChangeInput = (event) => {
-        setUserInput(event)
-      }
-    
-      const onAddTextInput = () => {
-        setAlphabet(prevState => {
-          return [...prevState, userInput]
-        });
-        setUserInput('') //  빈 입력값으로 초기화하기 위해
-      }
-    
-    return(
-        <View style={styles.inputView}>
-            <TextInput 
-                value={userInput} 
-                style={styles.inputSubView}
-                onChangeText={onChangeInput}
+  const onChangeInput = (event) => {
+    setUserInput(event)
+  }
+  
+  const onAddTextInput = () => {
+    setAlphabet(prevState => {
+      return [...prevState, userInput]
+    });
+    setUserInput('') //  빈 입력값으로 초기화하기 위해
+  }
 
-                placeholder={'Type anything...'}
-                multiline={true}
-                maxLength={20}
-                autoCapitalize={false}
-                // editable={false}
-            />
-            <Button title="Add Text Input" onPress={onAddTextInput} />
-            <ScrollView>
-                {
-                alphabet.map((el, idx) => (
-                    <Text style={styles.inputText} key={idx}>
-                    {el}
-                    </Text>
-                ))
-                }
-            </ScrollView>
-        </View>
+  return(
+    <View style={styles.inputView}>
+      <TextInput 
+        value={userInput} 
+        style={styles.inputSubView}
+        onChangeText={onChangeInput}
 
-    )
+        placeholder={'Type anything...'}
+        multiline={true}
+        maxLength={20}
+        autoCapitalize={false}
+        // editable={false}
+      />
+      <Button title="Add Text Input" onPress={onAddTextInput} />
+      <ScrollView>
+        {
+          alphabet.map((el, idx) => (
+            <Text style={styles.inputText} key={idx}>
+            {el}
+            </Text>
+          ))
+        }
+      </ScrollView>
+    </View>
+
+  )
 }
 
 const styles = StyleSheet.create({
-    inputView:{
-        width:'70%'
-    },
-    inputSubView:{
-        backgroundColor:'#cecece',
-        fontSize:25,
-        padding:10
-    },
-    inputText:{
-        fontSize:15,
-        fontWeight:'bold',
-        color:'white',
-        padding:10,
-        margin:5,
-        backgroundColor: 'green'
-    }
+  inputView:{
+    width:'70%'
+  },
+  inputSubView:{
+    backgroundColor:'#cecece',
+    fontSize:25,
+    padding:10
+  },
+  inputText:{
+    fontSize:15,
+    fontWeight:'bold',
+    color:'white',
+    padding:10,
+    margin:5,
+    backgroundColor: 'green'
+  }
 })
 
 // react-native의 data flow는 무조건 부모에서 자식! 
