@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import  { Header }  from './src/header';
 import { Generator } from './src/generator';
 import { Numlist } from './src/numlist';
-import { Input } from './src/input'; 
-// Input.js의 state값을 올려야하는 상황이 온다면 => "state"와 "관련 함수"만 App.js로 옮겨오면 된다!
+import { Input } from './src/input'; // Input.js의 state값을 올려야하는 상황이 온다면 => "state"와 "관련 함수"만 App.js로 옮겨오면 된다!
+import { PickerComponent } from './src/picker';
 
 export default App = () => {
   const [ appName ] = useState('My first App');
@@ -25,6 +25,8 @@ export default App = () => {
 
   return(
     <View style={styles.mainView}>
+      <PickerComponent />
+
       <Header appName={appName} />
 
       <View>
